@@ -9,14 +9,16 @@ module.exports = gql `
         username: String!
         comments: [Comment]! 
         likes: [Like]!
+        likeCount: Int!
+        commentCount: Int!
     }
-    type Comment{
+    type Comment {
         id: ID!
         createdAt: String!
         username: String!
         body: String!
     }
-    type Like{
+    type Like {
         id: ID!
         createdAt: String!
         username: String!
@@ -38,7 +40,7 @@ module.exports = gql `
         getPosts: [Post]
         getPost(postId: ID!): Post
     }
-    type Mutation{
+    type Mutation {
         register(registerInput: RegisterInput): User!
         login(username: String!, password: String!): User!
         createPost(body: String!): Post!
@@ -46,5 +48,8 @@ module.exports = gql `
         createComment(postId: String!, body: String!): Post!
         deleteComment(postId: ID!, commentId: ID!): Post!
         likePost(postId: ID!): Post!
+    }
+    type Subscription {
+        newPost: Post!
     }
 `;
