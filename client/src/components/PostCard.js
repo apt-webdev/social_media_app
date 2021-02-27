@@ -13,6 +13,13 @@ function PostCard({
 }) {
   //const { user } = useContext(AuthContext);
 
+  function likePost(){
+    console.log("Liked Post!");
+  }
+  function commentOnPost(){
+    console.log("Comment on post!");
+  }
+
   return (
     <Card fluid>
       <Card.Content>
@@ -27,8 +34,8 @@ function PostCard({
         </Card.Meta>
         <Card.Description>{body}</Card.Description>
       </Card.Content>
-      {/* <Card.Content extra>
-        <LikeButton user={user} post={{ id, likes, likeCount }} />
+       <Card.Content extra>
+        {/* <LikeButton user={user} post={{ id, likes, likeCount }} />
         <MyPopup content="Comment on post">
           <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
             <Button color="blue" basic>
@@ -39,8 +46,24 @@ function PostCard({
             </Label>
           </Button>
         </MyPopup>
-        {user && user.username === username && <DeleteButton postId={id} />}
-      </Card.Content> */}
+        {user && user.username === username && <DeleteButton postId={id} />} */}
+        <Button as="div" labelPosition="right" onClick={likePost}>
+          <Button color ="teal" basic>
+            <Icon name="heart" />
+          </Button>
+          <Label basic color="teal" poiting="left">
+            {likeCount}
+          </Label>
+        </Button>
+        <Button as="div" labelPosition="right" onClick={commentOnPost}>
+          <Button color ="blue" basic>
+            <Icon name="comments" />
+          </Button>
+          <Label basic color="blue" poiting="left">
+            {commentCount}
+          </Label>
+        </Button>
+      </Card.Content> 
     </Card>
   );
 }
